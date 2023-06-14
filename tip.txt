@@ -1,0 +1,70 @@
+Cara, tô bem feliz que tu tá conseguindo evoluir apesar das dificudades e
+problemas pessoais que se encontra no momento. É isso aí!
+O projeto tá ganhando forma e já cumpre algumas funções que são necessárias
+para seu propósito.
+Gostei que já faz o login respeitando o script e inclusive mostre quando o 
+usuario ou senha estão incorretos. É claro que o processo de autenticação 
+vai ser feito no backend, porém o frontend pode implementar também restrições.
+Quanto a parte visual podemos evoluir bastante ainda, mas, estruturalmente, 
+tanto a página de login quanto a homepage, estão como deveriam ser, bem divididas
+e obedecendo um espaço ideal. Depois a gente evolui o css e o js.
+
+Vou deixar apenas algumas sugestões mesmo, no geral o projeto tá muito bom.
+Parabéns, mano!
+
+Sugestões:
+
+1 - Organização de pastas (Vamos tentar organizar o projeto separando em pastas). 
+
+    /*As barras invertidas indicam o que é uma pasta*/ 
+    \Projeto CICC
+        \assets
+            \css
+                style.css
+                paginastyle.css
+            \js
+                script.js
+                paginascript.js
+            \img
+                image.png
+        \pages
+            pagina_principal.html
+        index.html
+
+    Obs: A pasta assests é meio que um padrão em alguns frameworks frontend, onde nela 
+    colocamos todos os ativos como, css, js, images, fonts e etc. Mas pode usar também 
+    a estrutura sem a pasta assets, assim:
+    
+    \Projeto CICC
+        \css
+            style.css
+            paginastyle.css
+        \js
+            script.js
+            paginascript.js
+        \img
+            image.png
+        \pages
+            pagina_principal.html
+        index.html
+
+
+    Lembrando que não há uma regra pra isso, mas organização é sempre importante.
+    Após a reestruturação das páginas é preciso reendereçar os arquivos para que eles sejam
+    vistos pela página html, tipo assim:
+        Onde antes era assim  href="style.css", vai ficar assim: 
+                              href="./assets/css/style.css" ou
+                              href="./css/style.css", dependendo de como for a organização
+    das pastas.
+
+2 - Padrões de nomenclatura dos arquivos.
+
+    Tenta usar padrões como o camelCase ou snake_case quando for nomear os arquivos,
+    por exemplo, no nome paginascript.js poderia ficar paginaScript.js ou pagina-script.js.
+    É bom padronizar isso!
+
+
+É isso, meu caro! Nesse momento me atentei mais a organização mesmo do que ao código, pois
+o código tá rodando bem e o objetivo é que tu evolua codando. Mas nas próximas atualizações, 
+se for necessário, posso sugerir algumas coisas no código.
+Valeu!
