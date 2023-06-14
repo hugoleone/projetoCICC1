@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Página Principal</title>
+  <link rel="stylesheet" type="text/css" href="paginastyle.css">
+  <script src="paginascript.js"></script>
+  <style>
+    .hidden {
+      display: none;
+    }
+    .content {
+      display: flex;
+    }
+    .user-list,
+    .chat,
+    .pesquisa-section,
+    .suporte-section {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#ocorrencias" class="menu-link active" id="ocorrencias-link">Ocorrências</a></li>
+        <li><a href="#pesquisa" class="menu-link" id="pesquisa-link">Pesquisa</a></li>
+        <li><a href="#suporte" class="menu-link" id="suporte-link">Suporte</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="user-list">
+        <h2>Usuários</h2>
+        <ul id="user-list"></ul>
+      </div>
+      <div class="chat">
+        <h2>Chat</h2>
+        <div id="chat-messages"></div>
+        <form id="chat-form">
+          <input type="text" id="message-input" placeholder="Digite sua mensagem">
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+      <div id="pesquisa" class="pesquisa-section hidden">
+        <h2>Pesquisa</h2>
+        <form>
+          <div class="form-group">
+            <label for="pesquisaNome">Nome:</label>
+            <input type="text" id="pesquisaNome" name="pesquisaNome">
+          </div>
+          <div class="form-group">
+            <label for="pesquisaTelefone">Telefone:</label>
+            <input type="text" id="pesquisaTelefone" name="pesquisaTelefone">
+          </div>
+          <div class="form-group">
+            <label for="pesquisaLocalizacao">Localização:</label>
+            <input type="text" id="pesquisaLocalizacao" name="pesquisaLocalizacao">
+          </div>
+          <button type="submit">Pesquisar</button>
+        </form>
+      </div>
+      <div id="suporte" class="suporte-section hidden">
+        <h2>Suporte</h2>
+        <form id="suporte-form">
+          <div class="form-group">
+            <label for="suporteNome">Nome:</label>
+            <input type="text" id="suporteNome" name="suporteNome">
+          </div>
+          <div class="form-group">
+            <label for="suporteEmail">Email:</label>
+            <input type="email" id="suporteEmail" name="suporteEmail">
+          </div>
+          <div class="form-group">
+            <label for="suporteAssunto">Assunto:</label>
+            <input type="text" id="suporteAssunto" name="suporteAssunto">
+          </div>
+          <div class="form-group">
+            <label for="suporteDescricao">Descrição:</label>
+            <textarea id="suporteDescricao" name="suporteDescricao"></textarea>
+          </div>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+    <div class="content">
+      <div class="map-container">
+        <h2>Mapa</h2>
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menuLinks = document.querySelectorAll('.menu-link');
+    const userSection = document.querySelector('.user-list');
+    const chatSection = document.querySelector('.chat');
+    const pesquisaSection = document.querySelector('.pesquisa-section');
+    const suporteSection = document.querySelector('.suporte-section');
+
+    function setActiveLink(link) {
+      menuLinks.forEach(menuLink => {
+        if (menuLink === link) {
+          menuLink.classList.add('active');
+        } else {
+          menuLink.classList.remove('active');
+        }
+      });
+    }
+
+    function showUserAndChatSections() {
+      userSection.style.display = 'block';
+      chatSection.style.display = 'block';
+    }
+
+    function hideUserAndChatSections() {
+      userSection.style.display = 'none';
+      chatSection.style.display = 'none';
+    }
+
+    function showPesquisaSection() {
+      pesquisaSection.style.display = 'block';
+    }
+
+    function hidePesquisaSection() {
+      pesquisaSection.style.display = 'none';
+    }
+
+    function showSuporteSection() {
+      suporteSection.style.display = 'block';
+    }
+
+    function hideSuporteSection() {
+      suporteSection.style.display = 'none';
+    }
+
+    function initializePage() {
+      setActiveLink(document.getElementById('ocorrencias-link'));
+      showUserAndChatSections();
+      hidePesquisaSection();
+      hideSuporteSection();
+    }
+
+    function handleMenuClick(event) {
+      event.preventDefault();
+
+      if (event.target.id === 'ocorrencias-link') {
+        setActiveLink(event.target);
+        showUserAndChatSections();
+        hidePesquisaSection();
+        hideSuporteSection();
+      } else if (event.target.id === 'pesquisa-link') {
+        setActiveLink(event.target);
+        hideUserAndChatSections();
+        showPesquisaSection();
+        hideSuporteSection();
+      } else if (event.target.id === 'suporte-link') {
+        setActiveLink(event.target);
+        hideUserAndChatSections();
+        hidePesquisaSection();
+        showSuporteSection();
+      }
+    }
+
+    const menuLinksArray = Array.from(menuLinks);
+    menuLinksArray.forEach(link => {
+      link.addEventListener('click', handleMenuClick);
+    });
+
+    initializePage();
+  </script>
+</body>
+</html>
